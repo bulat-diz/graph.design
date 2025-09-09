@@ -19,7 +19,7 @@
     h1{margin:0 0 12px; font-size:clamp(20px,2.6vw,28px);}
     .grid{
       display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
+      grid-template-columns:repeat(5,1fr); /* 5 колонок = 2 ряда по 5 карточек для 10 проектов */
       gap:var(--gap);
     }
     @media (max-width:1100px){ .grid{ grid-template-columns:repeat(3,1fr);} }
@@ -38,9 +38,7 @@
     .thumb img{
       position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
     }
-    .info{
-      padding:10px 12px; border-top:1px solid rgba(255,255,255,.08);
-    }
+    .info{ padding:10px 12px; border-top:1px solid rgba(255,255,255,.08); }
     .title{font-size:14px; line-height:1.35;}
     .meta{font-size:12px; color:var(--muted); margin-top:2px;}
     .link{position:absolute; inset:0; z-index:2;}
@@ -59,16 +57,16 @@
 
   <script>
     const projects = [
-      { href: "https://www.behance.net/gallery/234255781", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9709e2234255781.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png", title: "ТСК (Брендбук + Логотип «Пушкинский рынок»)" },
-      { href: "https://www.behance.net/gallery/207108023", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e2ee87207108023.Y3JvcCw0MTY4LDMyNjAsMCw0NTM.png", title: "ТЦ (Брендбук + Логотип «ДомПроДом»)" },
-      { href: "https://www.behance.net/gallery/155766071", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/010a38155766071.Y3JvcCw4MzMsNjUyLDM1MCww.png", title: "450 лет Уфе (Фирменный стиль + Логотип)" },
-      { href: "https://www.behance.net/gallery/155762479", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/b8b491155762479.Y3JvcCwxMTAwLDg2MCwwLDE3Ng.jpg", title: "Телеканал БСТ (Фирменный стиль + Логотип)" },
-      { href: "https://www.behance.net/gallery/234257065", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e71db9234257065.Y3JvcCwxNDM4LDExMjUsMzIsMA.png", title: "Автономные грузоперевозки Evocargo (Презентация)" },
-      { href: "https://www.behance.net/gallery/179302897", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9751b2179302897.Y3JvcCw3MTcsNTYxLDkyLDE3Nw.png", title: "РМПЦ (Фирменный стиль + Логотип)" },
-      { href: "https://www.behance.net/gallery/120658801", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/3f3c3b120658801.Y3JvcCwxOTk5LDE1NjQsMCww.png", title: "Весна — 2021 г." },
-      { href: "https://www.behance.net/gallery/97300699",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/0cbb5a97300699.Y3JvcCw5MjAsNzIwLDg2LDA.jpg",  title: "КХЛ (НХЛ) — 2018 г." },
-      { href: "https://www.behance.net/gallery/97307731",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/68f87e97307731.Y3JvcCw0MDQsMzE2LDMzNSwyMjc.png",  title: "Аэропорт Уфа" },
-      { href: "https://www.behance.net/gallery/208578659", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6cc1ba208578659.66f16ecf63072.jpg", title: "3D и Motion (Pet-проект)" },
+      { href: "https://www.behance.net/gallery/234255781/tsk-(brendbuk-logotip-pushkinskij-rynok)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9709e2234255781.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png", title: "ТСК (Брендбук + Логотип «Пушкинский рынок»)" },
+      { href: "https://www.behance.net/gallery/207108023/tc-(brendbuk-logotip-dom-pro-dom)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e2ee87207108023.Y3JvcCw0MTY4LDMyNjAsMCw0NTM.png", title: "ТЦ (Брендбук + Логотип «ДомПроДом»)" },
+      { href: "https://www.behance.net/gallery/155766071/450-let-ufe-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/010a38155766071.Y3JvcCw4MzMsNjUyLDM1MCww.png", title: "450 лет Уфе (Фирменный стиль + Логотип)" },
+      { href: "https://www.behance.net/gallery/155762479/telekanal-bst-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/b8b491155762479.Y3JvcCwxMTAwLDg2MCwwLDE3Ng.jpg", title: "Телеканал БСТ (Фирменный стиль + Логотип)" },
+      { href: "https://www.behance.net/gallery/234257065/avtonomnye-gruzoperevozki-Evocargo-(prezentacija)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e71db9234257065.Y3JvcCwxNDM4LDExMjUsMzIsMA.png", title: "Автономные грузоперевозки Evocargo (Презентация)" },
+      { href: "https://www.behance.net/gallery/179302897/rmpc-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9751b2179302897.Y3JvcCw3MTcsNTYxLDkyLDE3Nw.png", title: "РМПЦ (Фирменный стиль + Логотип)" },
+      { href: "https://www.behance.net/gallery/120658801/vesna-2021-g", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/3f3c3b120658801.Y3JvcCwxOTk5LDE1NjQsMCww.png", title: "Весна — 2021 г." },
+      { href: "https://www.behance.net/gallery/97300699/khl-(nhl)-2018-g",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/0cbb5a97300699.Y3JvcCw5MjAsNzIwLDg2LDA.jpg",  title: "КХЛ (НХЛ) — 2018 г." },
+      { href: "https://www.behance.net/gallery/97307731/aeroport-ufa",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/68f87e97307731.Y3JvcCw0MDQsMzE2LDMzNSwyMjc.png",  title: "Аэропорт Уфа" },
+      { href: "https://www.behance.net/gallery/208578659/3D-i-Motion-(Pet-proekt)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6cc1ba208578659.66f16ecf63072.jpg", title: "3D и Motion (Pet-проект)" },
     ];
 
     const grid = document.getElementById('grid');
