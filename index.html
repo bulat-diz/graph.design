@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Портфолио — превью Behance</title>
+  <title>Портфолио — Булат Хайрльварин</title>
   <style>
     :root{
       --gap: 16px;
@@ -12,66 +12,78 @@
       --card: #151517;
       --text: #e9e9ea;
       --muted:#b8b8bf;
+      --link:#4da3ff;
     }
     *{box-sizing:border-box}
     body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text);}
     .wrap{max-width:1280px; margin:auto; padding:24px;}
-    h1{margin:0 0 12px; font-size:clamp(20px,2.6vw,28px);}
+    h1{margin:0 0 12px; font-size:clamp(22px,2.6vw,32px);}
     .header-meta{
       font-size:14px;
       color:var(--text);
-      opacity:0.6; /* прозрачность 60% */
-      margin:0 0 16px;
+      opacity:0.6;
+      margin:0 0 24px;
     }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:var(--gap);
+    /* Визитка */
+    .profile{
+      display:flex; flex-wrap:wrap; align-items:center;
+      background:#151517; border-radius:14px; padding:20px; margin-bottom:32px;
+      box-shadow:0 6px 24px rgba(0,0,0,.35);
     }
-    @media (max-width:1100px){ .grid{ grid-template-columns:repeat(3,1fr);} }
-    @media (max-width:800px){  .grid{ grid-template-columns:repeat(2,1fr);} }
-    @media (max-width:520px){  .grid{ grid-template-columns:1fr;} }
-
-    .card{
-      position:relative; background:var(--card); border-radius:var(--radius); overflow:hidden;
-      box-shadow:0 6px 24px rgba(0,0,0,.35); transition:transform .18s ease, box-shadow .18s ease;
+    .profile img{
+      width:90px; height:90px; border-radius:50%; object-fit:cover; margin-right:20px;
     }
-    .card:hover{ transform:translateY(-2px); box-shadow:0 12px 36px rgba(0,0,0,.45); }
-    .thumb{
-      position:relative; width:100%; padding-top:70%;
-      background:#0e0e10;
+    .profile-info{flex:1; min-width:220px;}
+    .profile-info h2{margin:0 0 8px; font-size:20px;}
+    .contacts{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;
     }
-    .thumb img{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+    .contacts a, .contacts span{
+      display:inline-block; padding:6px 10px;
+      border:1px solid rgba(255,255,255,.2); border-radius:8px;
+      font-size:14px; color:var(--text); text-decoration:none;
+      transition:all .2s ease;
     }
-    .info{ padding:10px 12px; border-top:1px solid rgba(255,255,255,.08); }
-    .title{font-size:14px; line-height:1.35;}
-    .link{position:absolute; inset:0; z-index:2;}
-    .visually-hidden{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;}
+    .contacts a:hover{ background:rgba(255,255,255,.1); color:var(--link); }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Портфолио</h1>
-    <p class="header-meta">Кликабельные обложки ведут на проекты на Behance.</p>
 
-    <div class="grid" id="grid">
-      <!-- Карточки сгенерируются ниже -->
+    <!-- Визитка -->
+    <div class="profile">
+      <img src="https://storage.weeek.net/images/9f/aa/9faa4bcb-e1e9-4a19-861d-8c91da924661/medium.png" alt="Булат Хайрльварин">
+      <div class="profile-info">
+        <h2>Булат Хайрльварин — Графический дизайнер</h2>
+        <div class="contacts">
+          <span>📍 Уфа</span>
+          <a href="tel:+79373495308">📞 +7 (937) 349-53-08</a>
+          <a href="mailto:bullez@mail.ru">✉️ bullez@mail.ru</a>
+          <a href="https://t.me/bullez" target="_blank">💬 Telegram</a>
+          <a href="https://disk.yandex.ru/i/-WDdisdqI2svhg" target="_blank">📄 Резюме (PDF)</a>
+          <a href="https://ufa.hh.ru/resume/0b0c463fff0c69c9de0039ed1f6b6946375756" target="_blank">💼 Резюме (hh.ru)</a>
+        </div>
+      </div>
     </div>
+
+    <!-- Портфолио -->
+    <h1>Портфолио</h1>
+    <p style="font-size:14px; color:#e9e9ea; opacity:0.4; margin:0 0 24px;">Кликабельные обложки ведут на проекты на Behance.</p>
+    <div class="grid" id="grid"></div>
   </div>
 
   <script>
     const projects = [
-      { href: "https://www.behance.net/gallery/234255781", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9709e2234255781.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png", title: "ТСК (Брендбук + Логотип «Пушкинский рынок»)" },
-      { href: "https://www.behance.net/gallery/207108023", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e2ee87207108023.Y3JvcCw0MTY4LDMyNjAsMCw0NTM.png", title: "ТЦ (Брендбук + Логотип «ДомПроДом»)" },
-      { href: "https://www.behance.net/gallery/155766071", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/010a38155766071.Y3JvcCw4MzMsNjUyLDM1MCww.png", title: "450 лет Уфе (Фирменный стиль + Логотип)" },
-      { href: "https://www.behance.net/gallery/155762479", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/b8b491155762479.Y3JvcCwxMTAwLDg2MCwwLDE3Ng.jpg", title: "Телеканал БСТ (Фирменный стиль + Логотип)" },
-      { href: "https://www.behance.net/gallery/234257065", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e71db9234257065.Y3JvcCwxNDM4LDExMjUsMzIsMA.png", title: "Автономные грузоперевозки Evocargo (Презентация)" },
-      { href: "https://www.behance.net/gallery/179302897", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9751b2179302897.Y3JvcCw3MTcsNTYxLDkyLDE3Nw.png", title: "РМПЦ (Фирменный стиль + Логотип)" },
-      { href: "https://www.behance.net/gallery/120658801", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/3f3c3b120658801.Y3JvcCwxOTk5LDE1NjQsMCww.png", title: "Весна — 2021 г." },
-      { href: "https://www.behance.net/gallery/97300699",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/0cbb5a97300699.Y3JvcCw5MjAsNzIwLDg2LDA.jpg",  title: "КХЛ (НХЛ) — 2018 г." },
-      { href: "https://www.behance.net/gallery/97307731",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/68f87e97307731.Y3JvcCw0MDQsMzE2LDMzNSwyMjc.png",  title: "Аэропорт Уфа" },
-      { href: "https://www.behance.net/gallery/208578659", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6cc1ba208578659.66f16ecf63072.jpg", title: "3D и Motion (Pet-проект)" },
+      { href: "https://www.behance.net/gallery/234255781/tsk-(brendbuk-logotip-pushkinskij-rynok)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9709e2234255781.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png", title: "ТСК (Брендбук + Логотип «Пушкинский рынок»)" },
+      { href: "https://www.behance.net/gallery/207108023/tc-(brendbuk-logotip-dom-pro-dom)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e2ee87207108023.Y3JvcCw0MTY4LDMyNjAsMCw0NTM.png", title: "ТЦ (Брендбук + Логотип «ДомПроДом»)" },
+      { href: "https://www.behance.net/gallery/155766071/450-let-ufe-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/010a38155766071.Y3JvcCw4MzMsNjUyLDM1MCww.png", title: "450 лет Уфе (Фирменный стиль + Логотип)" },
+      { href: "https://www.behance.net/gallery/155762479/telekanal-bst-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/b8b491155762479.Y3JvcCwxMTAwLDg2MCwwLDE3Ng.jpg", title: "Телеканал БСТ (Фирменный стиль + Логотип)" },
+      { href: "https://www.behance.net/gallery/234257065/avtonomnye-gruzoperevozki-Evocargo-(prezentacija)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e71db9234257065.Y3JvcCwxNDM4LDExMjUsMzIsMA.png", title: "Автономные грузоперевозки Evocargo (Презентация)" },
+      { href: "https://www.behance.net/gallery/179302897/rmpc-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9751b2179302897.Y3JvcCw3MTcsNTYxLDkyLDE3Nw.png", title: "РМПЦ (Фирменный стиль + Логотип)" },
+      { href: "https://www.behance.net/gallery/120658801/vesna-2021-g", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/3f3c3b120658801.Y3JvcCwxOTk5LDE1NjQsMCww.png", title: "Весна — 2021 г." },
+      { href: "https://www.behance.net/gallery/97300699/khl-(nhl)-2018-g",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/0cbb5a97300699.Y3JvcCw5MjAsNzIwLDg2LDA.jpg",  title: "КХЛ (НХЛ) — 2018 г." },
+      { href: "https://www.behance.net/gallery/97307731/aeroport-ufa",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/68f87e97307731.Y3JvcCw0MDQsMzE2LDMzNSwyMjc.png",  title: "Аэропорт Уфа" },
+      { href: "https://www.behance.net/gallery/208578659/3D-i-Motion-(Pet-proekt)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6cc1ba208578659.66f16ecf63072.jpg", title: "3D и Motion (Pet-проект)" },
     ];
 
     const grid = document.getElementById('grid');
