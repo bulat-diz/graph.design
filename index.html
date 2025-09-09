@@ -3,195 +3,84 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Портфолио — Behance сетка</title>
+  <title>Портфолио — лента</title>
   <style>
-    :root{
-      --gap: 14px;
-      --radius: 14px;
-    }
-    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       background:#0b0b0c;
       color:#fff;
     }
-    .wrap{
-      max-width:1280px;
-      margin:auto;
+    h1{padding:16px 20px;margin:0}
+    .scroll-row{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
       padding:20px;
     }
-    h1{
-      font-size:clamp(20px,2.6vw,28px);
-      margin:0 0 14px;
-      font-weight:700;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:var(--gap);
-    }
-    @media (max-width:1024px){ .grid{ grid-template-columns:repeat(2,1fr) } }
-    @media (max-width:640px){  .grid{ grid-template-columns:1fr } }
-
+    .scroll-row::-webkit-scrollbar{height:10px}
+    .scroll-row::-webkit-scrollbar-thumb{background:#444;border-radius:6px}
     .card{
-      position:relative;
+      flex:0 0 380px; /* ширина каждой карточки */
+      border-radius:14px;
       background:#151517;
-      border-radius:var(--radius);
       overflow:hidden;
-      box-shadow:0 6px 24px rgba(0,0,0,.35);
-      transition: transform .18s ease, box-shadow .18s ease;
+      position:relative;
+      scroll-snap-align:start;
     }
-    .card:hover{
-      transform: translateY(-2px);
-      box-shadow:0 10px 30px rgba(0,0,0,.45);
-    }
-
-    /* Соотношение сторон под стандартный embed: 404×316 ≈ 78.22% */
     .ratio{
       position:relative;
       width:100%;
-      padding-top:78.22%;
-      overflow:hidden;
-      background:#0e0e10;
+      padding-top:78.22%; /* 404x316 */
     }
     .ratio iframe{
-      position:absolute; inset:0;
-      width:100%; height:100%;
+      position:absolute;inset:0;
+      width:100%;height:100%;
       border:0;
     }
-
-    /* Кликом по всей карточке — переход на оригинал проекта */
     .overlay{
-      position:absolute; inset:0;
+      position:absolute;inset:0;
       z-index:3;
     }
-
-    /* Небольшая подпись под карточкой (опционально) */
     .caption{
-      padding:10px 12px 12px;
-      color:#c7c7cc;
+      padding:10px 12px;
       font-size:13px;
-      line-height:1.35;
-      border-top:1px solid rgba(255,255,255,.06);
+      color:#c7c7cc;
+      border-top:1px solid rgba(255,255,255,.1);
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>Портфолио</h1>
+  <h1>Портфолио</h1>
+  <div class="scroll-row">
 
-    <div class="grid">
-      <!-- 1 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/234255781" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/234255781?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 234255781</div>
-      </article>
-
-      <!-- 2 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/207108023" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/207108023?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 207108023</div>
-      </article>
-
-      <!-- 3 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/155766071" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/155766071?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 155766071</div>
-      </article>
-
-      <!-- 4 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/155762479" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/155762479?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 155762479</div>
-      </article>
-
-      <!-- 5 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/234257065" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/234257065?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 234257065</div>
-      </article>
-
-      <!-- 6 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/179302897" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/179302897?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 179302897</div>
-      </article>
-
-      <!-- 7 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/120658801" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/120658801?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 120658801</div>
-      </article>
-
-      <!-- 8 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/97300699" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/97300699?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 97300699</div>
-      </article>
-
-      <!-- 9 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/97307731" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/97307731?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 97307731</div>
-      </article>
-
-      <!-- 10 -->
-      <article class="card">
-        <a class="overlay" href="https://www.behance.net/gallery/208578659" target="_blank" rel="noopener"></a>
-        <div class="ratio">
-          <iframe src="https://www.behance.net/embed/project/208578659?ilo0=1"
-                  allowfullscreen allow="clipboard-write"
-                  loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
-        <div class="caption">Проект 208578659</div>
-      </article>
+    <div class="card">
+      <a class="overlay" href="https://www.behance.net/gallery/234255781" target="_blank"></a>
+      <div class="ratio">
+        <iframe src="https://www.behance.net/embed/project/234255781?ilo0=1" loading="lazy"></iframe>
+      </div>
+      <div class="caption">Проект 234255781</div>
     </div>
+
+    <div class="card">
+      <a class="overlay" href="https://www.behance.net/gallery/207108023" target="_blank"></a>
+      <div class="ratio">
+        <iframe src="https://www.behance.net/embed/project/207108023?ilo0=1" loading="lazy"></iframe>
+      </div>
+      <div class="caption">Проект 207108023</div>
+    </div>
+
+    <div class="card">
+      <a class="overlay" href="https://www.behance.net/gallery/155766071" target="_blank"></a>
+      <div class="ratio">
+        <iframe src="https://www.behance.net/embed/project/155766071?ilo0=1" loading="lazy"></iframe>
+      </div>
+      <div class="caption">Проект 155766071</div>
+    </div>
+
+    <!-- добавь остальные проекты аналогично -->
+
   </div>
 </body>
 </html>
