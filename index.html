@@ -74,22 +74,39 @@
     @media(max-width:640px){#contacts,#portfolio,#about,#experience,#other,.section,.profile{scroll-margin-top:98px}}
 
     /* Нижняя мобильная панель (tabbar) */
-    .tabbar{display:none}
-    @media(max-width:640px){
-      .tabbar{
-        display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;
-        background:#151517;border-top:1px solid #333; padding:6px 6px;
-        gap:6px;justify-content:space-between;
-      }
-      .tabbar a{
-        flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
-        text-decoration:none; color:#e9e9ea; padding:8px 4px; border-radius:10px;
-      }
-      .tabbar a svg{ width:22px; height:22px }
-      .tabbar a.active, .tabbar a:hover{ color:var(--accent); background:rgba(255,255,255,.06) }
-      body{ padding-bottom:64px } /* место под панель */
-      .menu{display:none}       /* верхнее меню скрываем на мобиле */
+     /* Нижняя мобильная панель (tabbar) */
+  .tabbar{display:none}
+  @media(max-width:640px){
+    .tabbar{
+      display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;
+      background:#151517;border-top:1px solid #333; padding:6px 6px;
+      gap:6px;justify-content:space-between;
     }
+    .tabbar a{
+      flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;
+      text-decoration:none; color:#e9e9ea; padding:8px 4px; border-radius:10px;
+    }
+    .tabbar a svg{ width:22px; height:22px }
+    .tabbar a.active, .tabbar a:hover{ color:var(--accent); background:rgba(255,255,255,.06) }
+
+    /* Аватар вместо иконки */
+    .tabbar img.avatar-icon{
+      width:26px; height:26px; border-radius:50%; object-fit:cover;
+    }
+
+    /* Увеличиваем “просвет” снизу под панель + safe-area */
+    body{ padding-bottom: calc(88px + env(safe-area-inset-bottom)); }
+    body{ padding-bottom: calc(88px + constant(safe-area-inset-bottom)); }
+    .tabbar{
+      padding-bottom: calc(6px + env(safe-area-inset-bottom));
+      padding-bottom: calc(6px + constant(safe-area-inset-bottom));
+    }
+    #toTop{
+      bottom: calc(88px + env(safe-area-inset-bottom) + 10px);
+      bottom: calc(88px + constant(safe-area-inset-bottom) + 10px);
+    }
+    .menu{display:none}
+  }
 
     /* Кнопка вверх */
     #toTop{position:fixed;bottom:74px;right:16px;padding:10px 14px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.4)}
@@ -118,31 +135,26 @@
 
   <!-- Нижняя панель (мобилка) -->
   <nav class="tabbar" aria-label="Навигация по разделам">
-    <a href="#contacts" id="tab-contacts" aria-label="Контакты">
-      <!-- phone -->
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79a15.46 15.46 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V21a1 1 0 01-1 1C10.85 22 2 13.15 2 2a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
-      <span style="font-size:11px">Контакты</span>
-    </a>
-    <a href="#portfolio" id="tab-portfolio" aria-label="Портфолио">
-      <!-- grid -->
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z"/></svg>
-      <span style="font-size:11px">Портфолио</span>
-    </a>
-    <a href="#about" id="tab-about" aria-label="Обо мне">
-      <!-- info -->
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 9h2v10h-2V9zm0-4h2v2h-2V5z"/></svg>
-      <span style="font-size:11px">Обо мне</span>
-    </a>
-    <a href="#experience" id="tab-experience" aria-label="Опыт">
-      <!-- briefcase -->
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 4h4a2 2 0 012 2v2h4a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2v-8a2 2 0 012-2h4V6a2 2 0 012-2zm0 4h4V6h-4v2z"/></svg>
-      <span style="font-size:11px">Опыт</span>
-    </a>
-    <a href="#other" id="tab-other" aria-label="Другой опыт">
-      <!-- layers -->
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l10 6-10 6L2 8l10-6zm0 8l10 6-10 6-10-6 10-6z"/></svg>
-      <span style="font-size:11px">Др. опыт</span>
-    </a>
+     <a href="#contacts">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59a1 1 0 01-.2 1.18L7 14v5a1 1 0 001 1h8a1 1 0 001-1v-5l-1.4-1.23a1 1 0 01-.2-1.18L19 5h2"/></svg>
+    <span>Контакты</span>
+  </a>
+  <a href="#portfolio">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <span>Портфолио</span>
+  </a>
+  <a href="#about">
+    <img src="https://storage.weeek.net/images/9f/aa/9faa4bcb-e1e9-4a19-861d-8c91da924661/medium.png" alt="avatar" class="avatar-icon">
+    <span>Обо мне</span>
+  </a>
+  <a href="#experience">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+    <span>Опыт</span>
+  </a>
+  <a href="#other">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span>Др. опыт</span>
+  </a>
   </nav>
 
   <div id="top" class="wrap">
@@ -399,3 +411,4 @@
   </script>
 </body>
 </html>
+
