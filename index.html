@@ -7,14 +7,14 @@
   <style>
     :root{--gap:16px;--radius:14px;--bg:#0b0b0c;--card:#151517;--text:#e9e9ea;--muted:#b8b8bf;--accent:#4da3ff;--maxw:1280px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
-    b,strong{font-weight:inherit} /* убираем жирность в тексте */
+    b,strong{font-weight:inherit}
 
     /* Навигация */
     .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:blur(6px);background:rgba(11,11,12,.9);border-bottom:1px solid rgba(255,255,255,.08)}
     .nav{max-width:var(--maxw);margin:auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     .brand img{width:32px;height:32px;border-radius:50%;object-fit:cover}
-    .brand .cat{width:28px;height:28px;border-radius:6px;object-fit:cover}
+    .brand .cat{width:44px;height:44px;border-radius:6px;object-fit:cover;margin-left:6px} /* БОЛЬШЕ КОТИКА */
     .brand b{font-size:16px;font-weight:600}
     .menu{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
     .menu a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.1)}
@@ -46,17 +46,17 @@
     /* Разделы */
     .section{margin-top:36px}
     .section h2{margin:0 0 8px;font-size:22px;font-weight:600}
-    .under{opacity:.5;font-size:13px;margin:0 0 14px} /* маленькая подпись под заголовком */
+    .under{opacity:.5;font-size:13px;margin:0 0 14px}
     .lead{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;margin:0 0 16px}
 
-    /* Skills: 2 колонки в ряд */
+    /* Skills */
     .skills{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     @media(max-width:800px){.skills{grid-template-columns:1fr}}
     .skill-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px}
     .skill-card p{margin:0 0 6px}
     .skill-card .label{opacity:.9}
 
-    /* Списки: висячая строка и ближе к левому краю */
+    /* Списки */
     ul.tight{list-style:disc outside; padding-left:1.1em; margin:6px 0 0 0}
     ul.tight li{margin:4px 0}
 
@@ -72,8 +72,26 @@
     /* Две колонки (для «Другой опыт» подпар) */
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     @media(max-width:900px){.two-col{grid-template-columns:1fr}}
+
     /* Кнопка вверх */
     #toTop{position:fixed;bottom:20px;right:20px;padding:10px 14px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+
+    /* Мобильная навигация: чип-лента */
+    @media (max-width:640px){
+      .nav{padding:8px 10px;gap:10px}
+      .brand img{width:28px;height:28px}
+      .brand b{font-size:15px}
+      .brand .cat{width:48px;height:48px} /* ещё больше на мобиле */
+      .menu{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:8px;scrollbar-width:none}
+      .menu::-webkit-scrollbar{display:none}
+      .menu a{white-space:nowrap;padding:6px 10px;font-size:14px;border-radius:12px}
+    }
+
+    /* Отступ при скролле к якорям (учёт липкого хедера) */
+    #contacts,#portfolio,#about,#experience,#other,.section,.profile{scroll-margin-top:92px}
+    @media(max-width:640px){
+      #contacts,#portfolio,#about,#experience,#other,.section,.profile{scroll-margin-top:98px}
+    }
   </style>
 </head>
 <body>
@@ -153,7 +171,18 @@
       <div class="skills">
         <div class="skill-card">
           <p class="label"><span>🛠️ Hard skills</span></p>
-          <p>Illustrator, Photoshop, Figma, Coral Draw, Premier, Lightroom, Blender и Spline (3D и Motion), Tilda, Midjourney, ChatGPT.</p>
+          <ul class="tight">
+            <li>Adobe Illustrator</li>
+            <li>Adobe Photoshop</li>
+            <li>Figma</li>
+            <li>CorelDRAW</li>
+            <li>Adobe Premiere Pro</li>
+            <li>Adobe Lightroom</li>
+            <li>Blender и Spline (3D & Motion)</li>
+            <li>Tilda</li>
+            <li>Midjourney</li>
+            <li>ChatGPT</li>
+          </ul>
         </div>
         <div class="skill-card">
           <p class="label"><span>🤝 Soft skills</span></p>
