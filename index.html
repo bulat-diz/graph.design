@@ -26,9 +26,10 @@
     .avatar{width:90px;height:90px;border-radius:50%;object-fit:cover}
     .profile-info h2{margin:0 0 8px;font-size:20px}
     .contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-    .contacts a,.contacts span{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;color:var(--text);text-decoration:none}
-    .contacts a:hover{background:rgba(255,255,255,.08);color:var(--accent)}
-    .contacts img{width:18px;height:18px}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;color:var(--text);text-decoration:none}
+    .contacts a{transition:all .2s ease}
+    .contacts a:hover{background:rgba(255,255,255,.08);color:var(--accent);border-color:rgba(77,163,255,.35)}
+    .icon{width:18px;height:18px;display:block}
 
     /* Портфолио */
     .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap)}
@@ -44,6 +45,14 @@
     .section{margin-top:36px}
     .section h2{margin:0 0 14px;font-size:22px}
     .lead{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;margin:0 0 16px}
+
+    /* Skills: 2 колонки в ряд */
+    .skills{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:800px){.skills{grid-template-columns:1fr}}
+    .skill-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px}
+    .skill-card b{color:#fff}
+
+    /* Опыт */
     .jobs{display:grid;gap:16px}
     .job{background:var(--card);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.08)}
     .job h3{margin:0 0 6px;font-size:18px}
@@ -62,26 +71,40 @@
     <nav class="nav">
       <a class="brand" href="#top"><img src="https://storage.weeek.net/images/9f/aa/9faa4bcb-e1e9-4a19-861d-8c91da924661/medium.png" alt=""><b>Булат Хайрльварин</b></a>
       <div class="menu">
+        <a href="#contacts">Контакты</a>
         <a href="#portfolio">Портфолио</a>
         <a href="#about">Обо мне</a>
         <a href="#experience">Опыт</a>
-        <a href="#contacts">Контакты</a>
       </div>
     </nav>
   </div>
 
   <div id="top" class="wrap">
 
-    <!-- Профиль -->
+    <!-- Контакты -->
     <div class="profile" id="contacts">
       <img class="avatar" src="https://storage.weeek.net/images/9f/aa/9faa4bcb-e1e9-4a19-861d-8c91da924661/medium.png" alt="Булат Хайрльварин">
       <div class="profile-info">
         <h2>Булат Хайрльварин — Графический дизайнер</h2>
         <div class="contacts">
-          <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Location_icon.svg" alt="">Уфа</span>
-          <a href="tel:+79373495308"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Phone_icon.svg" alt="">+7 (937) 349-53-08</a>
-          <a href="mailto:bullez@mail.ru"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="">bullez@mail.ru</a>
-          <a href="https://t.me/bullez" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="">Telegram</a>
+          <span class="pill">📍 Уфа</span>
+          <a class="pill" href="tel:+79373495308">📞 +7 (937) 349-53-08</a>
+          <a class="pill" href="mailto:bullez@mail.ru">✉️ bullez@mail.ru</a>
+          <a class="pill" href="https://t.me/bullez" target="_blank" rel="noopener">
+            <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt=""> Telegram
+          </a>
+          <!-- hh.ru SVG-иконка (встроенная) -->
+          <a class="pill" href="https://ufa.hh.ru/resume/0b0c463fff0c69c9de0039ed1f6b6946375756" target="_blank" rel="noopener" title="Резюме на hh.ru">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="11" fill="#E31E24"></circle>
+              <path fill="#fff" d="M7 8.2h1.9v3.1c.5-.6 1.2-1 2.1-1 1.6 0 2.6 1.1 2.6 2.9v3.6H11.7V13c0-.9-.4-1.4-1.1-1.4-.8 0-1.3.6-1.3 1.6v3.1H7V8.2zm8.3 2.2h1.9v.9c.5-.7 1.1-1 1.9-1 .3 0 .6 0 .8.1v1.8c-.3-.1-.6-.2-.9-.2-1 0-1.7.6-1.7 1.9v2.9H15.3v-6.4z"/>
+            </svg>
+            hh.ru
+          </a>
+          <a class="pill" href="https://disk.yandex.ru/i/-WDdisdqI2svhg" target="_blank" rel="noopener">
+            <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" alt=""> Резюме (PDF)
+          </a>
+          <span class="pill">🧳 Готов к переезду: Казань • Москва</span>
         </div>
       </div>
     </div>
@@ -96,7 +119,37 @@
     <!-- Обо мне -->
     <section class="section" id="about">
       <h2>Обо мне</h2>
-      <div class="lead">Руководитель отдела дизайна, опыт в создании фирменных стилей, брендгайдов, дизайн-систем. Умею сокращать сроки за счёт AI и выстраивания процессов.</div>
+
+      <div class="lead">
+        <p>📎 Работал руководителем отдела дизайна и старшим графическим дизайнером в студии дизайна Банан. Управлял командой из 3-х дизайнеров, выстраивая эффективные процессы, планирование и контроль качества проектов. Разрабатывал фирменные стили, айдентику, бренд-гайды и дизайн-системы для крупных компаний в сферах лизинга, ритейла, медицины и спорта. Курировал полный цикл разработки полиграфической, сувенирной, рекламной и презентационной продукции, а также Web-интерфейсов. Обеспечивал соответствие материалов технологическим требованиям и бренд-стандартам.</p>
+        <p><b>Ключевые достижения:</b></p>
+        <ul style="margin:8px 0 0 18px">
+          <li>Запустил более 10 проектов с бренд-гайдами и айдентикой.</li>
+          <li>Сократил время разработки концептов на 70% за счёт оптимизации процессов и внедрения AI-инструментов.</li>
+          <li>Разработал и внедрил собственных Telegram-ботов для автоматизации рутинных задач, что повысило эффективность команды и снизило нагрузку на дизайнеров.</li>
+          <li>Снизил количество правок от заказчиков на 80% благодаря системному подходу к дизайну.</li>
+        </ul>
+      </div>
+
+      <div class="lead">
+        <p>💡 <b>Моя цель:</b> возглавлять креативное направление или дизайн-отдел, создавая проекты, которые усиливают ценность бренда и приносят измеримый бизнес-результат. Хочу развивать команду, внедрять инновационные решения и выстраивать процессы, которые позволяют работать быстрее, качественнее и эффективнее.</p>
+      </div>
+
+      <div class="skills">
+        <div class="skill-card">
+          <p><b>Hard skills</b></p>
+          <p>Illustrator, Photoshop, Figma, Coral Draw, Premier, Lightroom, Blender и Spline (3D и Motion), Tilda, Midjourney, ChatGPT.</p>
+        </div>
+        <div class="skill-card">
+          <p><b>Soft skills</b></p>
+          <ul style="margin:8px 0 0 18px">
+            <li>Лидерство и развитие команд.</li>
+            <li>Умение презентовать дизайн на языке, понятном заказчику и топ-менеджменту.</li>
+            <li>Навык выстраивания процессов и оптимизации сроков.</li>
+            <li>Умение анализировать рынок и адаптировать визуальную стратегию под бизнес-цели.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Опыт -->
@@ -105,12 +158,12 @@
       <div class="jobs">
 
         <article class="job">
-          <h3>Руководитель отдела дизайна — <a href="https://banan.studio/" target="_blank" style="color:#4da3ff">студия дизайна «Банан»</a></h3>
+          <h3>Руководитель отдела дизайна — <a href="https://banan.studio/" target="_blank" rel="noopener" style="color:#4da3ff">студия дизайна «Банан»</a></h3>
           <div class="meta">сентябрь 2019 — август 2025</div>
           <ul>
-            <li>Управление командой дизайнеров, процессы и контроль качества.</li>
-            <li>Фирменные стили, бренд-гайды, дизайн-системы для крупных клиентов.</li>
-            <li>Внедрение AI и автоматизации: −70% времени на концепты, −80% правок.</li>
+            <li>Управление командой дизайнеров, построение процессов и контроль качества.</li>
+            <li>Фирменные стили, бренд-гайды, дизайн-системы; digital и печать.</li>
+            <li>Внедрение AI и автоматизации: −70% времени на концепты; −80% правок.</li>
           </ul>
         </article>
 
@@ -118,7 +171,7 @@
           <h3>Старший дизайнер — «Нефтяная кухня»</h3>
           <div class="meta">сентябрь 2017 — март 2020</div>
           <ul>
-            <li>Разработка фирменного стиля и бренд-документации.</li>
+            <li>Фирменный стиль и бренд-документация, единая визуальная система.</li>
             <li>Kanban → time-to-market с 1 месяца до 1 недели.</li>
           </ul>
         </article>
@@ -126,7 +179,7 @@
         <article class="job">
           <h3>Графический дизайнер — УГНТУ (факультет ОНД)</h3>
           <div class="meta">август 2018 — август 2019</div>
-          <ul><li>Создал единый визуальный стиль факультета, ускорив работу в 2 раза.</li></ul>
+          <ul><li>Единый визуальный стиль факультета; ускорение макетирования ×2.</li></ul>
         </article>
 
         <article class="job">
@@ -134,7 +187,7 @@
           <div class="meta">май 2018 — август 2018</div>
           <ul>
             <li>Оптимизация подготовки афиш — публикации в день события.</li>
-            <li>Гибкие шаблоны → ускорение дизайна на 40%.</li>
+            <li>Гибкие шаблоны → ускорение дизайна ≈40%.</li>
           </ul>
         </article>
 
@@ -147,7 +200,7 @@
         <article class="job">
           <h3>Инженер-программист АСУ — «СКАДтех»</h3>
           <div class="meta">ноябрь 2018 — сентябрь 2019</div>
-          <ul><li>SCADA: конфигурирование, интеграция, пуско-наладка.</li></ul>
+          <ul><li>SCADA: конфигурирование, интеграция, пуско-наладка, обучение.</li></ul>
         </article>
 
         <article class="job">
@@ -159,7 +212,7 @@
         <article class="job">
           <h3>Инженер по НТИ — УГНТУ</h3>
           <div class="meta">сентябрь 2015 — апрель 2016</div>
-          <ul><li>Организация коммуникаций, запуск медиacentра университета.</li></ul>
+          <ul><li>Организация коммуникаций; запуск медиacentра университета.</li></ul>
         </article>
 
       </div>
@@ -174,7 +227,7 @@
   <script>
     // Портфолио
     const projects=[
-      { href: "https://www.behance.net/gallery/234255781/tsk-(brendbuk-logotip-pushkinskij-rynok)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9709e2234255781.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png", title: "ТСК (Брендбук + Логотип «Пушкинский рынок»)" },
+       { href: "https://www.behance.net/gallery/234255781/tsk-(brendbuk-logotip-pushkinskij-rynok)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9709e2234255781.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png", title: "ТСК (Брендбук + Логотип «Пушкинский рынок»)" },
       { href: "https://www.behance.net/gallery/207108023/tc-(brendbuk-logotip-dom-pro-dom)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e2ee87207108023.Y3JvcCw0MTY4LDMyNjAsMCw0NTM.png", title: "ТЦ (Брендбук + Логотип «ДомПроДом»)" },
       { href: "https://www.behance.net/gallery/155766071/450-let-ufe-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/010a38155766071.Y3JvcCw4MzMsNjUyLDM1MCww.png", title: "450 лет Уфе (Фирменный стиль + Логотип)" },
       { href: "https://www.behance.net/gallery/155762479/telekanal-bst-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/b8b491155762479.Y3JvcCwxMTAwLDg2MCwwLDE3Ng.jpg", title: "Телеканал БСТ (Фирменный стиль + Логотип)" },
@@ -198,7 +251,7 @@
     toTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 
     // Подсветка активного меню
-    const sections=document.querySelectorAll("section, .profile");
+    const sections=document.querySelectorAll("#contacts, #portfolio, #about, #experience");
     const navLinks=document.querySelectorAll(".menu a");
     window.addEventListener("scroll",()=>{
       let cur="";
