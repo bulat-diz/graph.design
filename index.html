@@ -3,89 +3,177 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Портфолио — Булат Хайрльварин</title>
+  <title>Булат Хайрльварин — Портфолио и Резюме</title>
   <style>
-    :root{
-      --gap: 16px;
-      --radius: 14px;
-      --bg: #0b0b0c;
-      --card: #151517;
-      --text: #e9e9ea;
-      --muted:#b8b8bf;
-      --link:#4da3ff;
-    }
-    *{box-sizing:border-box}
-    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text);}
-    .wrap{max-width:1280px; margin:auto; padding:24px;}
-    h1{margin:0 0 12px; font-size:clamp(22px,2.6vw,32px);}
-    .header-meta{
-      font-size:14px;
-      color:var(--text);
-      opacity:0.6;
-      margin:0 0 24px;
-    }
-    /* Визитка */
-    .profile{
-      display:flex; flex-wrap:wrap; align-items:center;
-      background:#151517; border-radius:14px; padding:20px; margin-bottom:32px;
-      box-shadow:0 6px 24px rgba(0,0,0,.35);
-    }
-    .profile img{
-      width:90px; height:90px; border-radius:50%; object-fit:cover; margin-right:20px;
-    }
-    .profile-info{flex:1; min-width:220px;}
-    .profile-info h2{margin:0 0 8px; font-size:20px;}
-    .contacts{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:8px;
-    }
-    .contacts a, .contacts span{
-      display:inline-block; padding:6px 10px;
-      border:1px solid rgba(255,255,255,.2); border-radius:8px;
-      font-size:14px; color:var(--text); text-decoration:none;
-      transition:all .2s ease;
-    }
-    .contacts a:hover{ background:rgba(255,255,255,.1); color:var(--link); }
+    :root{--gap:16px;--radius:14px;--bg:#0b0b0c;--card:#151517;--text:#e9e9ea;--muted:#b8b8bf;--accent:#4da3ff;--maxw:1280px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+
+    /* Навигация */
+    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:blur(6px);background:rgba(11,11,12,.9);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{max-width:var(--maxw);margin:auto;display:flex;align-items:center;gap:12px;padding:10px 16px}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+    .brand img{width:32px;height:32px;border-radius:50%}
+    .brand b{font-size:16px}
+    .menu{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+    .menu a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--text);border:1px solid rgba(255,255,255,.1)}
+    .menu a.active,.menu a:hover{border-color:var(--accent);color:var(--accent)}
+
+    /* Контейнер */
+    .wrap{max-width:var(--maxw);margin:auto;padding:20px 24px}
+
+    /* Профиль */
+    .profile{display:flex;flex-wrap:wrap;align-items:center;gap:16px;background:var(--card);border-radius:14px;padding:16px 20px;margin:18px 0 28px}
+    .avatar{width:90px;height:90px;border-radius:50%;object-fit:cover}
+    .profile-info h2{margin:0 0 8px;font-size:20px}
+    .contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+    .contacts a,.contacts span{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;color:var(--text);text-decoration:none}
+    .contacts a:hover{background:rgba(255,255,255,.08);color:var(--accent)}
+    .contacts img{width:18px;height:18px}
+
+    /* Портфолио */
+    .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap)}
+    @media(max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.35);position:relative}
+    .thumb{width:100%;padding-top:70%;position:relative;background:#0e0e10}
+    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .info{padding:10px 12px;border-top:1px solid rgba(255,255,255,.08)}
+    .title{font-size:14px;line-height:1.35}
+    .link{position:absolute;inset:0}
+
+    /* Разделы */
+    .section{margin-top:36px}
+    .section h2{margin:0 0 14px;font-size:22px}
+    .lead{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;margin:0 0 16px}
+    .jobs{display:grid;gap:16px}
+    .job{background:var(--card);border-radius:12px;padding:16px;border:1px solid rgba(255,255,255,.08)}
+    .job h3{margin:0 0 6px;font-size:18px}
+    .job .meta{opacity:.7;font-size:14px;margin-bottom:8px}
+    .job ul{margin:8px 0 0 18px}
+    .job li{margin:6px 0}
+
+    /* Кнопка вверх */
+    #toTop{position:fixed;bottom:20px;right:20px;padding:10px 14px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;display:none;box-shadow:0 4px 12px rgba(0,0,0,.4)}
   </style>
 </head>
 <body>
-  <div class="wrap">
 
-    <!-- Визитка -->
-    <div class="profile">
-      <img src="https://storage.weeek.net/images/9f/aa/9faa4bcb-e1e9-4a19-861d-8c91da924661/medium.png" alt="Булат Хайрльварин">
+  <!-- Навигация -->
+  <div class="nav-wrap">
+    <nav class="nav">
+      <a class="brand" href="#top"><img src="https://storage.weeek.net/images/9f/aa/9faa4bcb-e1e9-4a19-861d-8c91da924661/medium.png" alt=""><b>Булат Хайрльварин</b></a>
+      <div class="menu">
+        <a href="#portfolio">Портфолио</a>
+        <a href="#about">Обо мне</a>
+        <a href="#experience">Опыт</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+    </nav>
+  </div>
+
+  <div id="top" class="wrap">
+
+    <!-- Профиль -->
+    <div class="profile" id="contacts">
+      <img class="avatar" src="https://storage.weeek.net/images/9f/aa/9faa4bcb-e1e9-4a19-861d-8c91da924661/medium.png" alt="Булат Хайрльварин">
       <div class="profile-info">
         <h2>Булат Хайрльварин — Графический дизайнер</h2>
         <div class="contacts">
-          <span>📍 Уфа</span>
-          <span>📞 +7 (937) 349-53-08</span>
-          <a href="mailto:bullez@mail.ru">✉️ bullez@mail.ru</a>
-          <a href="https://t.me/bullez" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" 
-       alt="Telegram" width="16" height="16" style="vertical-align:middle; margin-right:6px;">
-  Telegram
-</a>
-          <a href="https://t.me/bullez" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" 
-       alt="CV" width="16" height="16" style="vertical-align:middle; margin-right:6px;">
-  Резюме
-</a>
-         <a href="https://ufa.hh.ru/resume/0b0c463fff0c69c9de0039ed1f6b6946375756" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/HeadHunter_logo.png/600px-HeadHunter_logo.png"
-       alt="hh.ru" width="18" height="18" style="vertical-align:middle; margin-right:6px;">
-  Резюме (hh.ru)
-</a>
+          <span><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Location_icon.svg" alt="">Уфа</span>
+          <a href="tel:+79373495308"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Phone_icon.svg" alt="">+7 (937) 349-53-08</a>
+          <a href="mailto:bullez@mail.ru"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="">bullez@mail.ru</a>
+          <a href="https://t.me/bullez" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="">Telegram</a>
         </div>
       </div>
     </div>
 
     <!-- Портфолио -->
-    <h1>Портфолио</h1>
-    <p style="font-size:14px; color:#e9e9ea; opacity:0.4; margin:0 0 24px;">Кликабельные обложки ведут на проекты на Behance.</p>
-    <div class="grid" id="grid"></div>
+    <section id="portfolio">
+      <h1>Портфолио</h1>
+      <p style="opacity:.4">Кликабельные обложки ведут на проекты на Behance.</p>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- Обо мне -->
+    <section class="section" id="about">
+      <h2>Обо мне</h2>
+      <div class="lead">Руководитель отдела дизайна, опыт в создании фирменных стилей, брендгайдов, дизайн-систем. Умею сокращать сроки за счёт AI и выстраивания процессов.</div>
+    </section>
+
+    <!-- Опыт -->
+    <section class="section" id="experience">
+      <h2>Опыт работы</h2>
+      <div class="jobs">
+
+        <article class="job">
+          <h3>Руководитель отдела дизайна — <a href="https://banan.studio/" target="_blank" style="color:#4da3ff">студия дизайна «Банан»</a></h3>
+          <div class="meta">сентябрь 2019 — август 2025</div>
+          <ul>
+            <li>Управление командой дизайнеров, процессы и контроль качества.</li>
+            <li>Фирменные стили, бренд-гайды, дизайн-системы для крупных клиентов.</li>
+            <li>Внедрение AI и автоматизации: −70% времени на концепты, −80% правок.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <h3>Старший дизайнер — «Нефтяная кухня»</h3>
+          <div class="meta">сентябрь 2017 — март 2020</div>
+          <ul>
+            <li>Разработка фирменного стиля и бренд-документации.</li>
+            <li>Kanban → time-to-market с 1 месяца до 1 недели.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <h3>Графический дизайнер — УГНТУ (факультет ОНД)</h3>
+          <div class="meta">август 2018 — август 2019</div>
+          <ul><li>Создал единый визуальный стиль факультета, ускорив работу в 2 раза.</li></ul>
+        </article>
+
+        <article class="job">
+          <h3>Графический дизайнер — «Digital Sport | Promo&Design»</h3>
+          <div class="meta">май 2018 — август 2018</div>
+          <ul>
+            <li>Оптимизация подготовки афиш — публикации в день события.</li>
+            <li>Гибкие шаблоны → ускорение дизайна на 40%.</li>
+          </ul>
+        </article>
+
+        <article class="job">
+          <h3>Программист-разработчик (C#) — Уфимский НТЦ</h3>
+          <div class="meta">август 2019 — октябрь 2019</div>
+          <ul><li>ПО для мониторинга и обработки промышленных экспериментов.</li></ul>
+        </article>
+
+        <article class="job">
+          <h3>Инженер-программист АСУ — «СКАДтех»</h3>
+          <div class="meta">ноябрь 2018 — сентябрь 2019</div>
+          <ul><li>SCADA: конфигурирование, интеграция, пуско-наладка.</li></ul>
+        </article>
+
+        <article class="job">
+          <h3>Инженер центра информации и рекламы — УГНТУ</h3>
+          <div class="meta">август 2016 — март 2017</div>
+          <ul><li>Курировал студенческий портал, организовывал PR-мероприятия.</li></ul>
+        </article>
+
+        <article class="job">
+          <h3>Инженер по НТИ — УГНТУ</h3>
+          <div class="meta">сентябрь 2015 — апрель 2016</div>
+          <ul><li>Организация коммуникаций, запуск медиacentра университета.</li></ul>
+        </article>
+
+      </div>
+    </section>
+
+    <p style="opacity:.5;text-align:center;font-size:13px">© Булат Хайрльварин · 2025</p>
   </div>
 
+  <!-- Кнопка Наверх -->
+  <button id="toTop">↑</button>
+
   <script>
-    const projects = [
+    // Портфолио
+    const projects=[
       { href: "https://www.behance.net/gallery/234255781/tsk-(brendbuk-logotip-pushkinskij-rynok)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/9709e2234255781.Y3JvcCwxNTM0LDEyMDAsMzQsMA.png", title: "ТСК (Брендбук + Логотип «Пушкинский рынок»)" },
       { href: "https://www.behance.net/gallery/207108023/tc-(brendbuk-logotip-dom-pro-dom)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/e2ee87207108023.Y3JvcCw0MTY4LDMyNjAsMCw0NTM.png", title: "ТЦ (Брендбук + Логотип «ДомПроДом»)" },
       { href: "https://www.behance.net/gallery/155766071/450-let-ufe-(firmennyj-stil-logotip)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/010a38155766071.Y3JvcCw4MzMsNjUyLDM1MCww.png", title: "450 лет Уфе (Фирменный стиль + Логотип)" },
@@ -97,23 +185,31 @@
       { href: "https://www.behance.net/gallery/97307731/aeroport-ufa",  image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/68f87e97307731.Y3JvcCw0MDQsMzE2LDMzNSwyMjc.png",  title: "Аэропорт Уфа" },
       { href: "https://www.behance.net/gallery/208578659/3D-i-Motion-(Pet-proekt)", image: "https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/6cc1ba208578659.66f16ecf63072.jpg", title: "3D и Motion (Pet-проект)" },
     ];
-
-    const grid = document.getElementById('grid');
-    grid.innerHTML = projects.map(p => `
+    document.getElementById('grid').innerHTML=projects.map(p=>`
       <article class="card">
-        <a class="link" href="${p.href}" target="_blank" rel="noopener">
-          <span class="visually-hidden">${p.title}</span>
-        </a>
-        <div class="thumb">
-          <img src="${p.image}" loading="lazy" alt="${p.title}">
-        </div>
-        <div class="info">
-          <div class="title">${p.title}</div>
-          <div class="meta">Behance • откроется в новой вкладке</div>
-        </div>
-      </article>
-    `).join('');
+        <a class="link" href="${p.href}" target="_blank"></a>
+        <div class="thumb"><img src="${p.image}" alt=""></div>
+        <div class="info"><div class="title">${p.title}</div></div>
+      </article>`).join('');
+
+    // Кнопка вверх
+    const toTop=document.getElementById('toTop');
+    window.addEventListener('scroll',()=>{toTop.style.display=window.scrollY>300?'block':'none'});
+    toTop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+    // Подсветка активного меню
+    const sections=document.querySelectorAll("section, .profile");
+    const navLinks=document.querySelectorAll(".menu a");
+    window.addEventListener("scroll",()=>{
+      let cur="";
+      sections.forEach(sec=>{
+        if(window.scrollY>=sec.offsetTop-120) cur=sec.getAttribute("id");
+      });
+      navLinks.forEach(a=>{
+        a.classList.remove("active");
+        if(a.getAttribute("href")==="#"+cur) a.classList.add("active");
+      });
+    });
   </script>
 </body>
 </html>
-
